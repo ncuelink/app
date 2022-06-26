@@ -1,0 +1,85 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="https://apss.ncue.edu.tw/ncueact/js/jquery.mobile-1.3.2.min.css">
+	<script src="https://apss.ncue.edu.tw/ncueact/js/jquery-1.9.1.min.js"></script>
+	<script src="https://apss.ncue.edu.tw/ncueact/js/jquery.mobile-1.3.2.min.js"></script>
+	<script src="https://apss.ncue.edu.tw/ncueact/js/index.js"></script>
+</head>
+              
+<body>
+	<div data-role="page">
+		<div data-role="header" data-position="fixed" data-theme="a">
+			<!--<a href="introduce.html" data-ajax="false" data-icon="back">上一頁</a>-->
+			<!--<h1>彰師學術單位</h1>-->
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li><a href="tel.html" data-ajax="false" data-prefetch="true">緊急聯絡</a></li>
+                    <li><a href="executive.html" data-ajax="false" data-prefetch="true">行政處室</a></li>
+                    <li><a href="#" class="ui-btn-active ui-state-persist">學院科系</a></li>
+                </ul>
+            </div>
+		</div>
+
+		<div data-role="content">
+
+<iframe src="https://www.ncue.edu.tw/p/412-1000-867.php?Lang=zh-tw" name="mainframe" width="100%" marginwidth="0" marginheight="0" onload="Javascript:SetCwinHeight()" onresize="Javascript:SetCwinHeight()" scrolling="Yes" frameborder="0" id="mainframe"></iframe>
+
+<script type="text/javascript">
+//防止window.onresize多次觸發
+var debounce = function (func, threshold, execAsap) {  
+    var timeout;  
+    return function debounced () {  
+        var obj = this, args = arguments;  
+        function delayed () {  
+            if (!execAsap)  
+            func.apply(obj, args);  
+            timeout = null;  
+        };  
+        if (timeout)  
+            clearTimeout(timeout);  
+        else if (execAsap)  
+            func.apply(obj, args);  
+        timeout = setTimeout(delayed, threshold || 100);  
+    };  
+}
+//偵測 widow.onresize 併觸發動作
+window.onresize = debounce( function(){  
+    SetCwinHeight();
+}, 100, true)
+//widow.onresize 觸發時要執行的動作
+function SetCwinHeight()
+{
+var viewportwidth;
+var viewportheight;
+//瀏覽器判斷
+if (typeof window.innerWidth != "undefined")
+ {
+      viewportwidth = window.innerWidth;
+      viewportheight = window.innerHeight;
+ }
+else if (typeof document.documentElement.clientWidth != "undefined")
+ {
+      viewportwidth = document.documentElement.clientWidth;
+       viewportheight = document.documentElement.clientHeight;
+ }
+else
+ {
+       viewportwidth = document.getElementsByTagName("body")[0].clientWidth;
+       viewportheight = document.getElementsByTagName("body")[0].clientHeight;
+ }
+//設定 iframe 高度
+var iframeid=document.getElementById("mainframe");
+iframeid.height = viewportheight;
+}
+</script>
+			
+		</div>
+		
+  </div>
+</body>
+</html>
