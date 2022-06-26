@@ -1,0 +1,105 @@
+﻿
+<!DOCTYPE html>
+<html manifest="ncue.appcache">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+	<title></title>
+	<link rel="stylesheet" href="https://apss.ncue.edu.tw/ncueact/js/jquery.mobile-1.3.2.min.css">
+	<script src="https://apss.ncue.edu.tw/ncueact/js/jquery-1.9.1.min.js"></script>
+	<script src="https://apss.ncue.edu.tw/ncueact/js/jquery.mobile-1.3.2.min.js"></script>
+	<script type="https://apss.ncue.edu.tw/ncueact/application/javascript" src="js/iscroll.js"></script>
+	<script src="https://apss.ncue.edu.tw/ncueact/js/index.js"></script>
+
+	<script type="text/javascript">
+		var myScroll;
+		function loaded() {
+		myScroll = new iScroll('wrapper',
+		{ zoom:true, zoomMax: 4 });
+		}
+		
+		document.addEventListener('DOMContentLoaded', loaded, false);
+    $(function() {$.mobile.page.prototype.options.domCache = true; });
+    
+	</script>
+
+	<style type="text/css">
+		div#wrapper img { -webkit-transform:translate3d(0,0,0) }
+	</style>
+	
+</head>               
+<body>
+	
+<div data-role="page" data-dom-cache="true">
+	<div data-role="header" class="ui-bar-a">
+		<!--<a href="index.php" data-ajax="false" data-icon="home">回首頁</a>-->
+		<!--<h1>校園地圖</h1>-->    
+		<div data-role="navbar" data-iconpos="left">
+			<ul>
+				<li><a href="map.html" data-ajax="false">平面圖</a></li>        
+				<li><a href="#" class="ui-btn-active ui-state-persist">教室代碼</a></li>        
+			</ul>
+		</div>
+	</div>
+
+	<!--<div id="wrapper" style="width:100%">-->
+    <!--<div data-role="content">-->
+
+        <iframe src="https://acadaff.ncue.edu.tw/ezfiles/21/1021/img/884/classroom.html" name="mainframe" width="100%" marginwidth="0" marginheight="0" onload="Javascript:SetCwinHeight()" onresize="Javascript:SetCwinHeight()" scrolling="Yes" frameborder="0" id="mainframe"></iframe>
+
+        <script type="text/javascript">
+//防止window.onresize多次觸發
+var debounce = function (func, threshold, execAsap) {
+    var timeout;
+    return function debounced () {
+        var obj = this, args = arguments;
+        function delayed () {
+            if (!execAsap)
+            func.apply(obj, args);
+            timeout = null;
+        };
+        if (timeout)
+            clearTimeout(timeout);
+        else if (execAsap)
+            func.apply(obj, args);
+        timeout = setTimeout(delayed, threshold || 100);
+    };
+}
+//偵測 widow.onresize 併觸發動作
+window.onresize = debounce( function(){
+    SetCwinHeight();
+}, 100, true)
+//widow.onresize 觸發時要執行的動作
+function SetCwinHeight()
+{
+var viewportwidth;
+var viewportheight;
+//瀏覽器判斷
+if (typeof window.innerWidth != "undefined")
+ {
+      viewportwidth = window.innerWidth;
+      viewportheight = window.innerHeight;
+ }
+else if (typeof document.documentElement.clientWidth != "undefined")
+ {
+      viewportwidth = document.documentElement.clientWidth;
+       viewportheight = document.documentElement.clientHeight;
+ }
+else
+ {
+       viewportwidth = document.getElementsByTagName("body")[0].clientWidth;
+       viewportheight = document.getElementsByTagName("body")[0].clientHeight;
+ }
+//設定 iframe 高度
+var iframeid=document.getElementById("mainframe");
+iframeid.height = viewportheight;
+}
+        </script>
+
+    </div>
+	<!--</div>-->
+
+<!--</div>-->
+<script>loaded();</script>
+</body>
+</html>
