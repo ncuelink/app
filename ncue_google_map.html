@@ -36,7 +36,8 @@
 		<!--<h1>校園地圖</h1>-->    
 		<div data-role="navbar" data-iconpos="left">
 			<ul>
-				<li><a href="ncue_map.html" data-ajax="false">Q版地圖</a></li>        
+				<li><a href="ncue_map.html" data-ajax="false">Q版地圖</a></li>
+                <li><a href="ncue_formal_map.html" data-ajax="false">平面地圖</a></li>
 				<li><a href="#" class="ui-btn-active ui-state-persist">Google 地圖</a></li>        
 			</ul>
 		</div>
@@ -44,7 +45,11 @@
 
 	<!--<div id="wrapper" style="width:100%">-->
     <!--<div data-role="content">-->
-
+    <div data-role="navbar" data-iconpos="left">
+            <ul>
+              <li><a href="https://www.google.com/maps/d/u/0/viewer?hl=zh-TW&mid=1Ugfy574hKzqEZ3cmg8PSpbPi-wZewBY-" data-ajax="false" target="_blank">在 Google Map 開啟</a></li>
+            </ul>
+        </div>
         <iframe src="https://www.google.com/maps/d/embed?mid=1Ugfy574hKzqEZ3cmg8PSpbPi-wZewBY-&ehbc=2E312F" name="mainframe" width="100%" marginwidth="0" marginheight="0" onload="Javascript:SetCwinHeight()" onresize="Javascript:SetCwinHeight()" scrolling="Yes" frameborder="0" id="mainframe"></iframe>
         
         <script type="text/javascript">
