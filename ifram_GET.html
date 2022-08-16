@@ -43,18 +43,19 @@ var myScroll;
         if (strUrl.indexOf("?") != -1) {
             var getSearch = strUrl.split("?");
             getPara = getSearch[1].split("&");
-        for (i = 0; i < getPara.length; i++) {
-            ParaVal = getPara[i].split("=");
-            aryPara.push(ParaVal[0]);
-            aryPara[ParaVal[0]] = ParaVal[1];
-        }
-            alert(aryPara);
+            for (i = 0; i < getPara.length; i++) {
+                ParaVal = getPara[i].split("=");
+                aryPara.push(ParaVal[0]);
+                aryPara[ParaVal[0]] = ParaVal[1];
+            }
+            var url = aryPara.url;
+            var title = aryPara.title;
         }
 </script>
     <div data-role="page" data-dom-cache="true">
         <div data-role="header" class="ui-bar-b">
             <a href="#" data-ajax="false" data-icon="arrow-l" onclick="javascript:history.back();">返回</a>
-            <h1><font color="white"><?!= aryPara.title ?></font></h1>
+            <h1><font color="white"><?!= title ?></font></h1>
         </div>
     <!-- ? Preloader Start -->
     <div id="preloader-active">
@@ -70,7 +71,7 @@ var myScroll;
     <!-- Preloader Start-->
         <!--<div id="wrapper" style="width:100%">-->
         <!--<div data-role="content">-->
-        <iframe src="<?!= aryPara.url ?>" name="mainframe" width="100%" marginwidth="0" marginheight="0" onload="Javascript:SetCwinHeight()" onresize="Javascript:SetCwinHeight()" scrolling="Yes" frameborder="0" id="mainframe"></iframe>
+        <iframe src="<?!= url ?>" name="mainframe" width="100%" marginwidth="0" marginheight="0" onload="Javascript:SetCwinHeight()" onresize="Javascript:SetCwinHeight()" scrolling="Yes" frameborder="0" id="mainframe"></iframe>
         <script type="text/javascript">
 //防止window.onresize多次觸發
 var debounce = function (func, threshold, execAsap) {
