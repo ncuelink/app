@@ -2536,10 +2536,36 @@ html[subframe] body {
 </head>
 
 <body id="t">
+<script type="text/javascript">
 
+    var URL = document.location.toString();
+    var useragent = navigator.userAgent;
+    useragent = useragent.toLowerCase();
+
+    if (useragent.indexOf('iphone') != -1) {
+        callalert();
+    }
+    else if (useragent.indexOf('ipad') != -1 || useragent.indexOf('ipod') != -1) {
+        callalert();
+    }
+    else if (useragent.indexOf('android') != -1) {
+        callalert();
+    }
+    else {
+        introduce();
+    }
+
+    function callalert() {
+        window.alert("最佳使用體驗，建議使用電腦遊玩喔！");
+        introduce();
+    }
+    function introduce() {
+        window.alert("小恐龍原本生活在中生代侏儸紀，某一天地面突然出現一道時空裂縫，他就一腳踩進了裂縫，就這樣穿越時空來到了現代，醒來的時候竟發現自己身在寶山美食沙漠，但是因為沒有摩托車所以被困在了寶山。");
+    }
+</script>
 <div id="main-frame-error" class="interstitial-wrapper" jstcache="0">
     <div class="onlyforchrome" style="font-size: 30px;text-align: center;font-family: Helvetica;">彰師小恐龍</div>
-    <div class="onlyforchrome" style="margin-top:5px;text-align:center;color:#8a8a8a;margin-bottom:80px; font-size:.8em;line-height:1.2em;font-family: Georgia;"><strong></strong></a><br/>請幫幫小恐龍逃離寶山沙漠</div>
+    <div class="onlyforchrome" style="margin-top:5px;text-align:center;color:#8a8a8a;margin-bottom:80px; font-size:.8em;line-height:1.2em;font-family: Georgia;"><strong></strong></a><br/>請幫幫小恐龍逃出寶山沙漠</div>
 	<div id="main-frame-notchrome" style="display:none; margin-top:50px;">T-Rex 游戏目前只适用于webkit引擎的浏览器，例如chrome。</div>
     <div id="offline-resources" jstcache="0">
     <div id="offline-resources-1x" jstcache="0">
